@@ -1,0 +1,16 @@
+- @title = "Regular Sized Table"
+
+%div{ id: "some_id" }
+
+:javascript
+  var data = [
+    [2014, "CSC1000W", 83.25, 64.2],
+    [2015, "CSC2000W", 77.42, 59.35],
+    [2016, "CSC3000W", 68.68, 49.8]
+  ];
+
+  var container = document.getElementById('some_id');
+  var hot = new Handsontable(container, {
+    data: data,
+    colHeaders: ["Year", "Course", "Result", "Class Average"],
+  });

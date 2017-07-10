@@ -8,7 +8,24 @@
 </head>
 <body>
 
+<h1> <%= "#{@title}" %> </h1>
+
+
+
+
 <%= yield %>
+<br><br>
+<button onclick="goBack()">Go Back</button>
+<br><br>
+<%= link_to "Home Page", welcome_index_path %>
 
 </body>
+
+<script> // back button
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
 </html>
