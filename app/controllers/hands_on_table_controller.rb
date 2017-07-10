@@ -2,6 +2,6 @@ class HandsOnTableController < ApplicationController
   def index
   end
 
-  def regular_sized_table
+  def display_table
   end
 end

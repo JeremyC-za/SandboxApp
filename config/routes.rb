@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :stripe, only: [:index]
   resources :hands_on_table, only: [:index] do
-    get :regular_sized_table, on: :collection
+    get :display_table, on: :collection
   end
   
 end
