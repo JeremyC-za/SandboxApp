@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>SandboxApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-<h1> <%= "#{@title}" %> </h1>
-
-
-
-
+<%= render "layouts/application_before" %>
 <%= yield %>
 <br><br>
-<button onclick="goBack()">Go Back</button>
-<br><br>
-<%= link_to "Home Page", welcome_index_path %>
-
+<%= render "layouts/application_after" %>
 </body>
-
-<script> // back button
-function goBack() {
-    window.history.back();
-}
-</script>
-
-
 </html>

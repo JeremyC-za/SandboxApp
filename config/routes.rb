@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  root 'welcome#index' # set welcome#index as the default page
+  root 'welcome#index'
   
   resources :welcome, only: [:index]
   resources :stripe, only: [:index]
+
   resources :hands_on_table, only: [:index] do
-    get :display_table, on: :collection
+    collection do
+   	  get :display_table
+    end
   end
-  
 end
