@@ -1,0 +1,15 @@
+- @title = "Stripe Charges"
+
+- if @charges.empty?
+  %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', customers_index_stripe_index_path}"
+- else
+  %table
+    %tr
+      %th Customer Name
+      %th Amount
+      %th Date
+    - @charges.each do |charge|
+      %tr
+        %td= charge.stripe_customer.full_name
+        %td= "#{charge.amount} #{charge.currency}"
+        %td= charge.created_at

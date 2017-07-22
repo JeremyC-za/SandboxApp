@@ -1,0 +1,12 @@
+- @title = "Edit Customer - #{@customer.full_name}"
+
+= form_for @customer, url: customers_update_stripe_path(@customer) do |f|
+  %p
+    = f.label :first_name
+    = f.text_field :first_name
+
+  %p
+    = f.label :last_name
+    = f.text_field :last_name
+
+  = f.submit "Save"

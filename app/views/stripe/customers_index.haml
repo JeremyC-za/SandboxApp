@@ -1,0 +1,22 @@
+- @title = "Stripe Customers"
+
+= link_to "Create New Customer", customers_new_stripe_index_path
+
+%br
+%br
+
+- if @customers.empty?
+  %i= "No customers have been created yet. You can create one by clicking the link above."
+- else
+  %table
+    %tr
+      %th{ width: 100 } First Name
+      %th{ width: 100 } Last Name
+      %th{ width: 50 }
+      %th{ width: 50 }
+    - @customers.each do |customer|
+      %tr
+        %td= customer.first_name
+        %td= customer.last_name
+        %td= link_to "View", customers_show_stripe_path(customer)
+        %td= link_to "Charge", charges_new_stripe_path(customer)
