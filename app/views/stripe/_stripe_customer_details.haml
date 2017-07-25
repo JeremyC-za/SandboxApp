@@ -1,0 +1,12 @@
+- url = @customer.new_record? ? customers_create_stripe_index_path : customers_update_stripe_path(@customer)
+
+= form_for @customer, url: url do |f|
+  %p
+    = f.label :first_name
+    = f.text_field :first_name
+
+  %p
+    = f.label :last_name
+    = f.text_field :last_name
+
+  = f.submit "Save"

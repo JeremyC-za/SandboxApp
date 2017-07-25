@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170722182535) do
     t.string   "currency",           null: false
     t.string   "external_id",        null: false
     t.integer  "stripe_customer_id", null: false
-    t.boolean  "status",             null: false
+    t.string   "status",             null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

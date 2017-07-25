@@ -12,7 +12,7 @@ class CreateStripeCharges < ActiveRecord::Migration
       t.string :currency, null: false
       t.string :external_id, null: false
       t.integer :stripe_customer_id, null: false
-      t.boolean :status, null: false
+      t.string :status, null: false
       t.timestamps null: false
     end
   end

@@ -1,6 +1,9 @@
 class StripeController < ApplicationController
   # Using this controller to manage the Stripe customers and stripe charges
   # Ideally you'd probably want to have those as two separate controllers though
+  # But for the sake of this app I'm just putting them together
+
+  before_filter :get_customer_from_params, only: [:customers_show, :customers_edit, :customers_update]
 
   def index
   end
@@ -10,22 +13,20 @@ class StripeController < ApplicationController
   end
 
   def customers_show
-    @customer = StripeCustomer.find(params[:id])
   end
 
   def customers_new
+    @customer = StripeCustomer.new
   end
 
   def customers_create
+    binding.pry
   end
 
   def customers_edit
-    @customer = StripeCustomer.find(params[:id])
   end
 
   def customers_update
-    @customer = StripeCustomer.find(params[:id])
-
     # this should use strong params, but I'm too lazy right now...
     @customer.first_name = params[:stripe_customer][:first_name]
     @customer.last_name = params[:stripe_customer][:last_name]
@@ -49,5 +50,10 @@ class StripeController < ApplicationController
   end
 
   def charges_create
+  end
+
+  private
+  def get_customer_from_params
+    @customer = StripeCustomer.find(params[:id])
   end
 end
