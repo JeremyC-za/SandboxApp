@@ -1,3 +1,14 @@
 - @title = @customer.full_name
 
+%table
+  %th{ width: 100 }
+  %th
+  - @customer.attributes.to_a.each do |attribute|
+    %tr
+      %td= humanized_attribute(attribute.first)
+      %td= attribute.second
+
+%br
+%br
+
 = link_to "Edit Customer Details", customers_edit_stripe_path(@customer)

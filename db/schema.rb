@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 20170722182535) do
   create_table "stripe_customers", force: :cascade do |t|
     t.string   "first_name",  null: false
     t.string   "last_name",   null: false
-    t.string   "external_id", null: false
+    t.string   "email",   null: false
+    t.string   "external_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

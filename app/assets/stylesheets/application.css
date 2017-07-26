@@ -14,3 +14,29 @@
  *= require_self
  *= require handsontable.full
  */
+
+
+th{
+  text-align: left;
+  font-size: 20px;
+}
+
+.flash{
+  padding-right: 20px;
+  padding-left: 20px;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.flash_error{
+  background-color: #d32e2e;
+}
+
+.flash_notice{
+  background-color: #56d62f;
+}
+
+.flash_warning{
+  background-color: #e29331;
+}
+
