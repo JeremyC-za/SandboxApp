@@ -3,7 +3,7 @@ class StripeController < ApplicationController
   # Ideally you'd probably want to have those as two separate controllers though
   # But for the sake of this app I'm just putting them together
 
-  before_filter :get_customer_from_params, only: [:customers_show, :customers_edit, :customers_update]
+  before_filter :get_customer_from_params, only: [:customers_show, :customers_edit, :customers_update, :customers_save_card_details]
 
   def index
   end
@@ -32,6 +32,17 @@ class StripeController < ApplicationController
       flash[:error] = "An Error Occurred"
       redirect_to action: :customers_new
     end
+  end
+
+  def customers_save_card_details
+    ext_customer = Stripe::Customer.create(:email => @customer.email, :source => params[:stripeToken])
+    if @customer.update(external_id: ext_customer.id)
+      flash[:notice] = "Card Details Captured"
+    else
+      flash[:notice] = "An Error Occurred - Card Details Not Captured"
+    end
+
+    redirect_to customers_show_stripe_path(@customer)
   end
 
   def customers_edit

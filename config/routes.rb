@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get :customers_show
       get :customers_edit
+      post :customers_save_card_details
       patch :customers_update
       get :charges_new
     end

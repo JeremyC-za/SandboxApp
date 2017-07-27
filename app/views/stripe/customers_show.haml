@@ -11,4 +11,7 @@
 %br
 %br
 
-= link_to "Edit Customer Details", customers_edit_stripe_path(@customer)
+%h2 Actions
+= link_to "Edit Customer Information", customers_edit_stripe_path(@customer)
+%br
+= render "stripe_checkout_button"
