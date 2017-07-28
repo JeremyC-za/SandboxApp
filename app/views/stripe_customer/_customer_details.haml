@@ -1,4 +1,4 @@
-- url = @customer.new_record? ? customers_create_stripe_index_path : customers_update_stripe_path(@customer)
+- url = @customer.new_record? ? stripe_customer_index_path : stripe_customer_path(@customer)
 
 = form_for @customer, url: url do |f|
   %p

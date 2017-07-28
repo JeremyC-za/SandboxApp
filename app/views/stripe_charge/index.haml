@@ -1,7 +1,7 @@
 - @title = "Stripe Charges"
 
 - if @charges.empty?
-  %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', customers_index_stripe_index_path}."
+  %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', stripe_customer_index_path}."
 - else
   %table
     %tr

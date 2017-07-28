@@ -1,6 +1,6 @@
 - @title = "Stripe Customers"
 
-= link_to "Create New Customer", customers_new_stripe_index_path
+= link_to "Create New Customer", new_stripe_customer_path
 
 %br
 %br
@@ -21,9 +21,9 @@
         %td= customer.first_name
         %td= customer.last_name
         %td= customer.email
-        %td= link_to "View", customers_show_stripe_path(customer)
+        %td= link_to "View", stripe_customer_path(customer)
         %td 
           - if customer.external_id 
-            = link_to "Charge", charges_new_stripe_path(customer)
+            = link_to "Charge", new_stripe_customer_stripe_charge_path(customer)
           - else 
             %i= "Card Details Not Entered"
