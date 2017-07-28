@@ -1,7 +1,8 @@
 - @title = @customer.full_name
 
+%h2= "Customer Details"
 %table
-  %th{ width: 100 }
+  %th{ width: 150 }
   %th
   - @customer.attributes.to_a.each do |attribute|
     %tr
@@ -10,6 +11,19 @@
 
 %br
 %br
+
+- if @active_card
+  %h2= "Active Card Details"
+  %table
+    %th{ width: 150 }
+    %th
+    - @active_card.each do |attribute, value|
+      %tr
+        %td= humanized_attribute(attribute)
+        %td= value
+
+  %br
+  %br  
 
 %h2 Actions
 = link_to "Edit Customer Information", edit_stripe_customer_path(@customer)

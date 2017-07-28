@@ -1,1 +1,12 @@
 - @title = "Create A New Charge"
+
+= form_for @charge, url: stripe_customer_stripe_charge_index_path(@customer) do |f|
+  %p
+    = f.label "Currency Code"
+    = f.text_field :currency, value: "ZAR"
+
+  %p
+    = f.label :amount
+    = f.number_field :amount
+
+  = f.submit "Make Charge", disable_with: "Charging Customer..."

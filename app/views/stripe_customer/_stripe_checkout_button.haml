@@ -1,6 +1,12 @@
-%form{action: :save_card_details, method: :post}
-  %input#stripe_button{:type => "submit", 
-                      :value => "Enter Card Details", 
+%div{ id: "toast_message" }
+  Please allow some time for the Stripe box to open
+
+- button_text = @customer.external_id ? "Update Card Details" : "Enter Card Details"
+
+= form_for @customer, url: save_card_details_stripe_customer_path(@customer), method: :post do |f|
+  %input#stripe_button{class: "trigger_toast",
+                      :type => "submit", 
+                      :value => button_text, 
                       "data-description" => "", 
                       "data-key" => "#{Rails.configuration.stripe[:publishable_key]}", 
                       "data-name" => "SandboxApp", 

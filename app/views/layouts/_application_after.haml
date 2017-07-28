@@ -1,0 +1,11 @@
+
+
+
+
+
+:javascript
+  $('.trigger_toast').on('click', function() {
+    var x = document.getElementById("toast_message");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  });

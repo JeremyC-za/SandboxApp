@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def humanized_attribute(attribute)
-    attribute.split('_').map(&:capitalize).join(' ')
+    attribute.to_s.split('_').map(&:capitalize).join(' ')
   end
 
   def back_button(caption = "Back", destination = nil)
