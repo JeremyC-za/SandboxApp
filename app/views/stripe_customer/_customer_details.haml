@@ -1,0 +1,16 @@
+- url = @customer.new_record? ? stripe_customer_index_path : stripe_customer_path(@customer)
+
+= form_for @customer, url: url do |f|
+  %p
+    = f.label :first_name
+    = f.text_field :first_name
+
+  %p
+    = f.label :last_name
+    = f.text_field :last_name
+
+  %p
+    = f.label :email
+    = f.text_field :email
+
+  = f.submit "Save"

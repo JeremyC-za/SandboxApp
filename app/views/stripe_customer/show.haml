@@ -1,0 +1,39 @@
+- @title = @customer.full_name
+
+%h2= "Customer Details"
+%table
+  %th{ width: 150 }
+  %th
+  - @customer.attributes.to_a.each do |attribute|
+    %tr
+      %td= humanized_attribute(attribute.first)
+      %td= attribute.second
+
+%br
+%br
+
+- if @active_card
+  %h2= "Active Card Details"
+  %table
+    %th{ width: 150 }
+    %th
+    - @active_card.each do |attribute, value|
+      %tr
+        %td= humanized_attribute(attribute)
+        %td= value
+
+  %br
+  %br  
+
+%h2 Actions
+= link_to "Edit Customer Information", edit_stripe_customer_path(@customer)
+%br
+- if @customer.external_id
+  = link_to "Charge Customer", new_stripe_customer_stripe_charge_path(@customer)
+  %br
+- if @customer.stripe_charges.any?
+  = link_to "View Customer's Charges", view_all_charges_stripe_customer_path(@customer)
+  %br
+= link_to "Delete Customer", stripe_customer_path(@customer), method: :delete, data: { confirm: "This will permanently delete all data related to this customer" }
+%br
+= render "stripe_checkout_button"

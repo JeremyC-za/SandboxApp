@@ -1,0 +1,29 @@
+- @title = "Stripe Customers"
+
+= link_to "Create New Customer", new_stripe_customer_path
+
+%br
+%br
+
+- if @customers.empty?
+  %i= "No customers have been created yet. You can create one by clicking the link above."
+- else
+  %table{ cellpadding: 5}
+    %tr
+      %th{ width: 100 } First Name
+      %th{ width: 100 } Last Name
+      %th{ width: 150 } Email
+      %th{ width: 75 }
+      %th{ width: 75 }
+      
+    - @customers.each do |customer|
+      %tr
+        %td= customer.first_name
+        %td= customer.last_name
+        %td= customer.email
+        %td= link_to "View", stripe_customer_path(customer)
+        %td 
+          - if customer.external_id 
+            = link_to "Charge", new_stripe_customer_stripe_charge_path(customer)
+          - else 
+            %i= "Card Details Not Entered"

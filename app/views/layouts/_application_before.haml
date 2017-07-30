@@ -1,1 +1,16 @@
+%div{ id: "global_links" }
+  |
+  - global_links.each do |caption, route|
+    = "#{link_to caption, route} |"
+
+%br
+
+- if flash.any?
+  %div{ class: "flash_notice flash"}
+    = flash[:notice]
+  %div{ class: "flash_error flash"}
+    = flash[:error]
+  %div{ class: "flash_warning flash"}
+    = flash[:warning]
+
 %h1= @title
