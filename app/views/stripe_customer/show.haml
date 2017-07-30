@@ -28,8 +28,9 @@
 %h2 Actions
 = link_to "Edit Customer Information", edit_stripe_customer_path(@customer)
 %br
-= link_to "Charge Customer", new_stripe_customer_stripe_charge_path(@customer)
-%br
+- if @customer.external_id
+  = link_to "Charge Customer", new_stripe_customer_stripe_charge_path(@customer)
+  %br
 - if @customer.stripe_charges.any?
   = link_to "View Customer's Charges", view_all_charges_stripe_customer_path(@customer)
   %br

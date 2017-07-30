@@ -14,19 +14,22 @@ class StripeCharge < ActiveRecord::Base
   end
 
   def charge_customer
+    return [false, "Charge is invalid"] if !self.valid?
     Stripe.max_network_retries = 2 # idempotently retries charges up to 2 times if the initial charge attempt fails
     external_customer = Stripe::Customer.retrieve(customer.external_id)
     charge = Stripe::Charge.create(:amount => amount, :currency => currency, :customer => external_customer, :description => "Charge for #{customer.human_name}")
 
     if charge[:status] = "succeeded"
-      self.update!(external_id: charge.id, status: "succeeded")
+      self.update(external_id: charge.id, status: "succeeded")
     end
+    self.save!
     [true, nil]
 
     rescue Stripe::CardError, Stripe::InvalidRequestError => e
       # error message is nasty for invalid currency code, buy meh, is functional...
       body = e.json_body[:error][:message]
-      self.update!(external_id: "Failed: #{body}", status: "failed")
+      self.update(external_id: "Failed: #{body}", status: "failed")
+      self.save!
       return [false, body]
   end
 end

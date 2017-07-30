@@ -18,8 +18,7 @@ class StripeChargeController < ApplicationController
     charge.stripe_customer_id = @customer.id
     result = charge.charge_customer
 
-    if charge.valid? && result[0] == true
-      charge.save
+    if result[0] == true
       flash[:notice] = "Customer Has Been Charged"
       redirect_to stripe_customer_stripe_charge_path(@customer, charge)
     else
