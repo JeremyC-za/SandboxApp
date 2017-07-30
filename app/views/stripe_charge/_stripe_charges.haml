@@ -1,0 +1,17 @@
+- charges = (@charges || [@charge]) # can now use this for show and index
+
+- if charges.empty?
+  %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', stripe_customer_index_path}."
+- else
+  %table
+    %tr
+      %th{ width: 200 } Customer Name
+      %th{ width: 100 } Amount
+      %th{ width: 100 } Status
+      %th Date
+    - charges.each do |charge|
+      %tr
+        %td= link_to charge.stripe_customer.full_name, stripe_customer_path(charge.stripe_customer)
+        %td= "#{charge.amount} #{charge.currency}"
+        %td= charge.status
+        %td= charge.created_at

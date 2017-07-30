@@ -16,15 +16,19 @@ class StripeChargeController < ApplicationController
     charge.external_id = "Not Attemped Yet"
     charge.status = "failed"
     charge.stripe_customer_id = @customer.id
+    result = charge.charge_customer
 
-    StripeCharge.transaction do
-      if charge.save && charge.charge_customer
-        flash[:notice] = "Customer Has Been Charged"
-        redirect_to stripe_customer_stripe_charge_path(@customer, charge)
-      else
-        flash[:error] = "An Error Occurred"
-        redirect_to new_stripe_customer_stripe_charge_path(@customer)
-      end
+    if charge.valid? && result[0] == true
+      charge.save
+      flash[:notice] = "Customer Has Been Charged"
+      redirect_to stripe_customer_stripe_charge_path(@customer, charge)
+    else
+      flash[:error] = "An Error Occurred: #{result[1]}"
+      redirect_to new_stripe_customer_stripe_charge_path(@customer)
     end
+  end
+
+  def show
+    @charge = StripeCharge.find(params[:id])
   end
 end

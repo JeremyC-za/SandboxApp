@@ -18,15 +18,15 @@ class StripeCharge < ActiveRecord::Base
     external_customer = Stripe::Customer.retrieve(customer.external_id)
     charge = Stripe::Charge.create(:amount => amount, :currency => currency, :customer => external_customer, :description => "Charge for #{customer.human_name}")
 
-    rescue Stripe::CardError, Stripe::InvalidRequestError => e
-      body = e.json_body[:error][:message]
-      self.update!(external_id: "Failed: #{body}", status: "failed")
-      raise ActiveRecord::Rollback
-
     if charge[:status] = "succeeded"
       self.update!(external_id: charge.id, status: "succeeded")
     end
+    [true, nil]
 
-    true
+    rescue Stripe::CardError, Stripe::InvalidRequestError => e
+      # error message is nasty for invalid currency code, buy meh, is functional...
+      body = e.json_body[:error][:message]
+      self.update!(external_id: "Failed: #{body}", status: "failed")
+      return [false, body]
   end
 end

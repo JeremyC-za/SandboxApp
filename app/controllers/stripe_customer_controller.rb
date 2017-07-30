@@ -1,6 +1,6 @@
 class StripeCustomerController < ApplicationController
 
-  before_filter :get_customer_from_params, only: [:edit, :update, :show, :destroy, :save_card_details]
+  before_filter :get_customer_from_params, only: [:edit, :update, :show, :destroy, :save_card_details, :view_all_charges]
   before_filter :permit_attributes, only: [:create, :update]
 
   def index
@@ -74,6 +74,18 @@ class StripeCustomerController < ApplicationController
   end
 
   def destroy
+    # TODO Can just make this delete cascade, but am too lazy to do it...    
+    @customer.stripe_charges.each do |charge|
+      StripeCharge.delete(charge)
+    end
+    StripeCustomer.delete(@customer)
+
+    flash[:notice] = "Customer #{@customer.human_name} deleted!"
+    redirect_to stripe_customer_index_path
+  end
+
+  def view_all_charges
+    @charges = @customer.stripe_charges
   end
 
   private
