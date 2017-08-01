@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>SandboxApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>SandboxApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<body>
-<%= render "layouts/application_before" %>
-<%= yield %>
-<br><br>
-<%= render "layouts/application_after" %>
-</body>
+  <body>
+    <div id="wrapper" class="toggled">
+      <!-- Sidebar Wrapper -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href="#">Start Bootstrap</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Shortcuts</a></li>
+          <li><a href="#">Overview</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <!-- /Sidebar Wrapper -->
+
+      <%= yield %>
+      <br><br>
+
+      <%= render "layouts/application_after" %>
+    </div>
+
+
+    # TODO 
+    https://blackrockdigital.github.io/startbootstrap-simple-sidebar/#
+    view-source:https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
+    https://www.youtube.com/watch?v=Nf_Si8_szmM
+
+
+    :javascript
+      $('.trigger_toast').on('click', function() {
+        var x = document.getElementById("toast_message");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      });
+  </body>
 </html>
