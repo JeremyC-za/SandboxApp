@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>SandboxApp</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,41 +7,44 @@
     <%= csrf_meta_tags %>
   </head>
 
+  <!-- Bootstrap theme taken from: https://blackrockdigital.github.io/startbootstrap-sb-admin/ -->
   <body>
-    <div id="wrapper" class="toggled">
-      <!-- Sidebar Wrapper -->
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-          <li class="sidebar-brand"><a href="#">Start Bootstrap</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Shortcuts</a></li>
-          <li><a href="#">Overview</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+    <div id="wrapper">
+      <nav class="navbar-inverse">
+        <div class="navbar-collapse"> 
+          <!-- RENDER GLOBAL LINKS -->
+          <ul class="nav navbar-nav side-nav">
+            <li>
+              <a href="index.html">TODO - Put Global Links Here - Make sure the ul has the same classes</a>
+            </li>
+          </ul>
+          <!-- /RENDER GLOBAL LINKS -->
+        </div>
+      </nav>
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header"><%= @title %></h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /Sidebar Wrapper -->
-
-      <%= yield %>
-      <br><br>
-
-      <%= render "layouts/application_after" %>
     </div>
-
-
-    # TODO 
-    https://blackrockdigital.github.io/startbootstrap-simple-sidebar/#
-    view-source:https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
-    https://www.youtube.com/watch?v=Nf_Si8_szmM
-
-
-    :javascript
-      $('.trigger_toast').on('click', function() {
-        var x = document.getElementById("toast_message");
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-      });
   </body>
+
+  <script id='show_toast_message'>
+    $('.trigger_toast').on('click', function() {
+      var x = document.getElementById("toast_message");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    });
+  </script>
 </html>
