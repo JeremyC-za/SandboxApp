@@ -8,7 +8,7 @@
 - if @customers.empty?
   %i= "No customers have been created yet. You can create one by clicking the link above."
 - else
-  %table{ cellpadding: 5}
+  %table.table.table-striped.table-condensed
     %tr
       %th{ width: 100 } First Name
       %th{ width: 100 } Last Name

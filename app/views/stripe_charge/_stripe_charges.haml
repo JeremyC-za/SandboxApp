@@ -3,7 +3,7 @@
 - if charges.empty?
   %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', stripe_customer_index_path}."
 - else
-  %table
+  %table.table.table-striped.table-condensed
     %tr
       %th{ width: 200 } Customer Name
       %th{ width: 100 } Amount

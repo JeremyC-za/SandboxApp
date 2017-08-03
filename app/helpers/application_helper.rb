@@ -1,8 +1,9 @@
 module ApplicationHelper
-  def global_links
+  def navigation_links
     # caption => route
     {
       "Home Page" => welcome_index_path,
+      "Bootstrap" => bootstrap_index_path,
       "Stripe Integration" => stripe_index_path,
       "HandsOn Table Integration" => hands_on_table_index_path,
     }

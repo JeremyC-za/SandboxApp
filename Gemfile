@@ -55,3 +55,4 @@ gem 'stripe' # for testing credit card payments
 gem 'jquery-ui-rails'
 gem 'rails_handsontable'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'

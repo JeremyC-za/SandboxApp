@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   
   resources :stripe, only: [:index]
+  resources :bootstrap, only: [:index]
   resources :stripe_charge, only: [:index]
   resources :stripe_customer do
     member do
