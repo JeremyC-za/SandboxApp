@@ -1,4 +1,4 @@
-- @title = "Create A New Charge"
+- @title = "Charge For #{@customer.human_name}"
 
 %div.col-lg-4
   = bootstrap_form_for @charge, url: stripe_customer_stripe_charge_index_path(@customer) do |f|
