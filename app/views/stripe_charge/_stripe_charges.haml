@@ -3,6 +3,16 @@
 - if charges.empty?
   %i= "No charges have been made yet. Charges can be made by clicking the 'Charge' link next to a customer on #{link_to 'this page', stripe_customer_index_path}."
 - else
+  %div.radio
+    %label
+      %input{ name: "optradio", type: "radio", onchange: "show_all_charges()", checked: :true } All Charges
+  %div.radio
+    %label
+      %input{ name: "optradio", type: "radio", onchange: "hide_failed_charges()" } Successful Charges
+  %div.radio
+    %label
+      %input{ name: "optradio", type: "radio", onchange: "hide_successful_charges()" } Failed Charges
+
   %table.table.table-striped.table-condensed
     %tr
       %th{ width: 200 } Customer Name
@@ -10,8 +20,28 @@
       %th{ width: 100 } Status
       %th Date
     - charges.each do |charge|
-      %tr
+      %tr{ class: charge.status }
         %td= link_to charge.stripe_customer.full_name, stripe_customer_path(charge.stripe_customer)
         %td= "#{charge.amount} #{charge.currency}"
         %td= charge.status
-        %td= charge.created_at
+        %td= charge.created_at.to_formatted_s(:short)
+
+
+
+:javascript
+  fade_out_speed = "slow"
+
+  function show_all_charges(){
+    $(".failed").fadeIn(fade_out_speed)
+    $(".succeeded").fadeIn(fade_out_speed)
+  }
+
+  function hide_failed_charges(){
+    $(".failed").fadeOut(fade_out_speed)
+    $(".succeeded").fadeIn(fade_out_speed)
+  }
+
+  function hide_successful_charges(){
+    $(".succeeded").fadeOut(fade_out_speed)
+    $(".failed").fadeIn(fade_out_speed)
+  }
