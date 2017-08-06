@@ -74,7 +74,6 @@ class StripeCustomerController < ApplicationController
   end
 
   def destroy
-    # TODO Can just make this delete cascade, but am too lazy to do it...    
     @customer.stripe_charges.each do |charge|
       StripeCharge.delete(charge)
     end

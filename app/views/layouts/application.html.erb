@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>SandboxApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<head>
-  <title>SandboxApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <!-- Bootstrap theme taken from: https://blackrockdigital.github.io/startbootstrap-sb-admin/ -->
+  <body>
+    <div id="wrapper">
+      <nav class="navbar-inverse">
+        <div class="navbar-collapse"> 
+         <%= render 'global/navigation_links' %>
+        </div>
+      </nav>
 
-<body>
-<%= render "layouts/application_before" %>
-<%= yield %>
-<br><br>
-<%= render "layouts/application_after" %>
-</body>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="col-lg-8">
+            <%= render 'global/flash_messages' %>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header"><%= @title %></h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-8">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script id='show_toast_message'>
+    $('.trigger_toast').on('click', function() {
+      var x = document.getElementById("toast_message");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    });
+  </script>
 </html>
