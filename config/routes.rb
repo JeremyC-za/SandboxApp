@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   
   resources :stripe, only: [:index]
+  resources :break_the_rules, only: [:index]
+  resources :break_the_rules_event
+  resources :break_the_rules_applicant
   resources :bootstrap, only: [:index]
   resources :stripe_charge, only: [:index]
   resources :stripe_customer do

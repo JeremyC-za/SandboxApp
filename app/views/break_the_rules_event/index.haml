@@ -1,0 +1,9 @@
+- @title = "BreakTheRules Events"
+
+- if @break_the_rules_events.empty?
+  %i= "Apparently I haven't attended BreakTheRules before. Click #{link_to 'add', new_break_the_rules_event_path} to create one!"
+
+- else
+  %ul
+  - @break_the_rules_events.each do |event|
+    %li= link_to event.name, break_the_rules_event_path(event.id)

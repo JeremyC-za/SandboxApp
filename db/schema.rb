@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722182535) do
+ActiveRecord::Schema.define(version: 20171026141525) do
+
+  create_table "break_the_rules_applicants", force: :cascade do |t|
+    t.string   "first_name",               null: false
+    t.string   "last_name",                null: false
+    t.string   "email",                    null: false
+    t.string   "year_of_study",            null: false
+    t.integer  "break_the_rules_event_id", null: false
+    t.text     "optional_message"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "break_the_rules_events", force: :cascade do |t|
+    t.date     "event_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stripe_charges", force: :cascade do |t|
     t.integer  "amount",             null: false
@@ -26,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170722182535) do
   create_table "stripe_customers", force: :cascade do |t|
     t.string   "first_name",  null: false
     t.string   "last_name",   null: false
-    t.string   "email",   null: false
+    t.string   "email",       null: false
     t.string   "external_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
