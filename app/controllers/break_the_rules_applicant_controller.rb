@@ -39,7 +39,7 @@ class BreakTheRulesApplicantController < ApplicationController
   def destroy
     @applicant.delete
     flash[:notice] = "Applicant Deleted"
-    redirect_to break_the_rules_event_path(@event)
+    redirect_to break_the_rules_event_break_the_rules_applicant_index_path(@event)
   end
 
   def export_as_csv
