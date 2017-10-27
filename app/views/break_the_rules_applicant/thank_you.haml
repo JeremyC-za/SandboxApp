@@ -3,7 +3,7 @@
 %h2= "Thank you #{@applicant.first_name}!"
 %br
 
-= button_to "Apply", new_break_the_rules_event_break_the_rules_applicant_path(@event), method: :get, id: "break_the_rules_apply_button"
+= button_to "Next Applicant", new_break_the_rules_event_break_the_rules_applicant_path(@event), method: :get, id: "break_the_rules_apply_button"
 %br
 
 = link_to "Back to Event", break_the_rules_event_path(@event)

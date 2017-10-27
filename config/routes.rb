@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   resources :break_the_rules, only: [:index]
   resources :break_the_rules_event do
+    member do
+      get :download_csv
+    end
     resources :break_the_rules_applicant do
       member do
         get :thank_you

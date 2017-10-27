@@ -3,7 +3,6 @@ class BreakTheRulesApplicant < ActiveRecord::Base
   belongs_to :event, foreign_key: "break_the_rules_event_id", class_name: "BreakTheRulesEvent"
 
   validates_presence_of :first_name, :last_name, :email, :year_of_study
-  validates_numericality_of :year_of_study
 
   YEARS_OF_STUDY = {
     (FIRST = '1') => 'First Year',
