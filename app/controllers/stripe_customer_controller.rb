@@ -32,7 +32,7 @@ class StripeCustomerController < ApplicationController
       redirect_to stripe_customer_path(new_customer)
     else
       flash[:error] = "An Error Occurred"
-      redirect_to new_stripe_customer_path(new_customer)
+      redirect_to new_stripe_customer_path
     end
   end
 
