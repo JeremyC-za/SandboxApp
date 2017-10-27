@@ -1,0 +1,6 @@
+- @title = "BreakTheRules Applicant - #{@applicant.display_name}"
+
+= link_to "Edit Applicant Information", edit_break_the_rules_event_break_the_rules_applicant_path(@event, @applicant)
+%br
+
+= link_to "Delete Applicant", break_the_rules_event_break_the_rules_applicant_path(@event, @applicant), method: :delete, data: { confirm: "Are you sure you want to delete the applicant?" }

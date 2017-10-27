@@ -6,6 +6,7 @@ module ApplicationHelper
       "Bootstrap" => bootstrap_index_path,
       "Stripe Integration" => stripe_index_path,
       "HandsOn Table Integration" => hands_on_table_index_path,
+      "BreakTheRules" => break_the_rules_path,
     }
   end
 

@@ -1,0 +1,17 @@
+- url = @applicant.new_record? ? break_the_rules_event_break_the_rules_applicant_index_path(@event.id) : break_the_rules_event_break_the_rules_applicant_path(@event.id, @applicant)
+- submit_text = "#{@applicant.new_record? ? 'Submit' : 'Update'}"
+
+%div.col-lg-4
+  = bootstrap_form_for @applicant, url: url do |f|
+    = f.text_field :first_name
+    = f.text_field :last_name
+    = f.email_field :email
+    = f.select :year_of_study, BreakTheRulesApplicant::YEARS_OF_STUDY.invert, include_blank: true
+    = f.text_area :optional_message, label: "Say something about yourself (optional)"
+    = f.submit submit_text
+
+  %br
+  = back_button
+
+:javascript
+  $("input").prop("autocomplete", 'off')

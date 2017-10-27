@@ -1,0 +1,23 @@
+- @title = "All Applicants for BreakTheRules - #{@event.event_date}"
+
+= link_to "Back to Event", break_the_rules_event_path(@event)
+%br
+%br
+
+- if @applicants.empty?
+  %i= "No applicants have been added yet. Click #{link_to 'here', new_break_the_rules_event_break_the_rules_applicant_path(@event)} to add someone."
+
+- else
+  %h3 All Applicants
+  %table.table.table-striped.table-condensed
+    %th{ style: "width: 20%;" } Name
+    %th{ style: "width: 20%;" } Email
+    %th{ style: "width: 10%;" } Year of Study
+    %th{ style: "width: 50%;" } Optional Message
+
+    - @applicants.each do |applicant|
+      %tr
+        %td= link_to applicant.display_name, break_the_rules_event_break_the_rules_applicant_path(applicant.event, applicant)
+        %td= applicant.email
+        %td= BreakTheRulesApplicant::YEARS_OF_STUDY[applicant.year_of_study]
+        %td= applicant.optional_message

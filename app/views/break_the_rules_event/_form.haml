@@ -1,0 +1,10 @@
+- url = @event.new_record? ? break_the_rules_event_index_path : break_the_rules_event_path
+- submit_text = "#{@event.new_record? ? 'Create' : 'Update'} Event"
+
+%div.col-lg-4
+  = bootstrap_form_for @event, url: url do |f|
+    = f.date_field :event_date
+    = f.submit submit_text
+
+  %br
+  = back_button

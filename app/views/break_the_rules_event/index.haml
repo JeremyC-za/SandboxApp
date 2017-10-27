@@ -1,0 +1,22 @@
+- @title = "BreakTheRules Events"
+
+= link_to "Back to BreakTheRules", break_the_rules_path
+%br
+%br
+
+- if @events.empty?
+  %i= "Apparently I haven't attended BreakTheRules before. Click #{link_to 'add', new_break_the_rules_event_path} to create one!"
+
+- else
+  = link_to 'Add New Event', new_break_the_rules_event_path
+
+%br
+
+  %h3 Existing Events
+  %table.table.table-striped.table-condensed
+    %th Event
+    %th Action
+    - @events.each do |event|
+      %tr
+        %td= link_to event.name, break_the_rules_event_path(event)
+        %td= link_to "Delete Event", break_the_rules_event_path(event), method: :delete, data: { confirm: "This will permanently delete the event and all its applicants." }

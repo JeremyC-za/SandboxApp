@@ -78,3 +78,15 @@ ul {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+#break_the_rules_apply_button {
+  color: #000000;
+  font-size: 24px;
+  padding: 15px 72px;
+  background-color: #09F2A8;
+  background-image: -moz-linear-gradient(top, #0EC441, #09F2A8);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0EC441), to(#09F2A8));
+  background-image: -webkit-linear-gradient(top, #0EC441, #09F2A8);
+  background-image: -o-linear-gradient(top, #0EC441, #09F2A8);
+  background-image: linear-gradient(to bottom, #0EC441, #09F2A8);
+}
