@@ -12,7 +12,8 @@
     <div id="wrapper">
       <nav class="navbar-inverse">
         <div class="navbar-collapse"> 
-         <%= render 'global/navigation_links' %>
+        <!-- hide nav links for BreakTheRules actions, don't want BreakTheRules applicants clicking around -->
+         <%= render 'global/navigation_links' unless params[:controller].include? "break_the_rules_" %>
         </div>
       </nav>
 

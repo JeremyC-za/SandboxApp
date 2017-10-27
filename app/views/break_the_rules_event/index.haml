@@ -1,5 +1,8 @@
 - @title = "BreakTheRules Events"
 
+= link_to "Back to BreakTheRules", break_the_rules_path
+%br
+
 - if @break_the_rules_events.empty?
   %i= "Apparently I haven't attended BreakTheRules before. Click #{link_to 'add', new_break_the_rules_event_path} to create one!"
 
