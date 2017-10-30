@@ -10,6 +10,7 @@ module ApplicationHelper
     }
   end
 
+  # TODO - can use yml files for this
   def humanized_attribute(attribute)
     attribute.to_s.split('_').map(&:capitalize).join(' ')
   end

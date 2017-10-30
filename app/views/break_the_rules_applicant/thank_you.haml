@@ -1,4 +1,4 @@
-- @title = "New Applicant Added"
+- @title = @applicant.fresh? ? "New Applicant Added" : "Applicant Details Updated"
 
 %h2= "Thank you #{@applicant.first_name}!"
 %br
@@ -8,3 +8,5 @@
 
 = link_to "Back to Event", break_the_rules_event_path(@event)
 %br
+
+%canvas{ id: "confetti" }
