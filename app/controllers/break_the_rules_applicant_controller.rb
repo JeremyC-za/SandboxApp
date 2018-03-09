@@ -1,6 +1,5 @@
 class BreakTheRulesApplicantController < ApplicationController
   before_filter :get_event_and_applicants
-  before_filter :hide_navigation_links, only: [:new, :edit, :thank_you]
 
   def index
   end
@@ -43,14 +42,14 @@ class BreakTheRulesApplicantController < ApplicationController
     redirect_to break_the_rules_event_break_the_rules_applicant_index_path(@event)
   end
 
+  def export_as_csv
+    # TODO
+  end
+
   private
   def get_event_and_applicants
     @event = BreakTheRulesEvent.find(params[:break_the_rules_event_id])
     @applicant = BreakTheRulesApplicant.find_by(id: params[:id])
     @applicants = @event.applicants
-  end
-
-  def hide_navigation_links
-    @hide_nav_links = true
   end
 end
