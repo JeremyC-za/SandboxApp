@@ -9,7 +9,7 @@ module ApplicationHelper
       "BreakTheRules" => break_the_rules_path,
     }
   end
-
+# Changed attribute to a readable form, capitalize new words, proper spacing etc
   def humanized_attribute(attribute)
     attribute.to_s.split('_').map(&:capitalize).join(' ')
   end
